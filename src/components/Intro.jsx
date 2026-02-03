@@ -18,7 +18,7 @@ const Intro = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <div className="animate-section-rise">
             <div className="eyebrow mb-6 animate-text-reveal animate-delay-1">Introducing Scenic</div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 font-light leading-tight mb-6 animate-text-reveal animate-delay-2">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 font-light leading-tight mb-6 animate-text-reveal animate-delay-2 text-glow">
               <span className="animate-text-sheen">
                 A refined creative studio aligning visionary talent with premium brand narratives.
               </span>
@@ -61,7 +61,7 @@ const Intro = () => {
             {[introphoto1, introphoto2, introphoto3, introphoto4].map((photo, index) => (
               <div
                 key={photo}
-                className={`group relative overflow-hidden rounded-2xl ${index % 2 === 0 ? 'h-48 md:h-56' : 'h-60 md:h-72'}`
+                className={`media-card group ${index % 2 === 0 ? 'h-48 md:h-56' : 'h-60 md:h-72'}`
                 }
               >
                 <img

@@ -23,7 +23,7 @@ const LetsTalk = () => {
                 </div>
                 <input type="text" placeholder="Subject" className="form-input w-full" />
                 <textarea placeholder="Message" className="form-input w-full h-32 md:h-40 resize-none"></textarea>
-                <button className="btn-primary focus-ring my-5">
+                <button className="btn-primary btn-glow focus-ring my-5 pulse-ring">
                     Send Message
                 </button>
             </form>

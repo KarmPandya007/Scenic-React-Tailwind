@@ -27,7 +27,7 @@ const MeetOurPeople = () => {
                             <img
                                 src={person.photo}
                                 alt={person.name}
-                                className="h-48 w-48 md:h-63 md:w-63 rounded-full object-cover transition duration-500 group-hover:scale-105"
+                                className="h-48 w-48 md:h-63 md:w-63 rounded-full object-cover transition duration-500 group-hover:scale-105 animate-float-slow"
                             />
                         </div>
                         <p className="text-gray-400 text-center my-3">{person.name}</p>
