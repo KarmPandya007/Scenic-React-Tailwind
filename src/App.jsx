@@ -6,13 +6,18 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="">
-      <Navbar />
-      <Intro />
-      <MeetOurPeople />
-      <LetsTalk />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/people" element={<People />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

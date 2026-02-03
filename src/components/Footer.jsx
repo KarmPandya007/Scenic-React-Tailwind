@@ -1,6 +1,8 @@
 import React from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const Footer = () => {
+    const reduceMotion = useReducedMotion()
     return (
         <div className="footer flex flex-col justify-center items-center p-6 md:p-10 px-4 bg-gradient-to-b from-white via-emerald-50/50 to-white">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-30 max-w-6xl w-full">
@@ -24,13 +26,18 @@ const Footer = () => {
                     <p className="text-gray-600 text-sm md:text-lg font-light">We connect top talent with bold brands to create
                         powerful
                         visuals that inspire, influence, and make a lasting impact.</p>
-                    <div className="icons flex gap-6 mt-3 justify-center md:justify-start">
+                    <motion.div
+                        className="icons flex gap-6 mt-3 justify-center md:justify-start"
+                        initial={reduceMotion ? undefined : { opacity: 0, y: 8 }}
+                        animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                    >
                         <i className="fa-brands fa-x-twitter scale-120 hover:text-gray-950 hover:scale-150 cursor-pointer transition"></i>
                         <i className="fa-brands fa-facebook-f scale-120 hover:text-blue-600 hover:scale-150 cursor-pointer transition"></i>
                         <i className="fa-brands fa-instagram scale-120 hover:text-pink-600 hover:scale-150 cursor-pointer transition"></i>
                         <i className="fa-brands fa-linkedin-in scale-120 hover:text-blue-500 hover:scale-150 cursor-pointer transition"></i>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
 
             <div className="text-gray-700 text-xs md:text-md font-light mt-12 md:mt-20 text-center">Copyright &copy; 2025 Company Name | Design: Tooplate</div>
