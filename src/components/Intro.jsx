@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Star, Globe, Zap } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import introphoto1 from '../assets/IntroPhotos/introphoto1.jpg'
 import introphoto2 from '../assets/IntroPhotos/introphoto2.jpg'
 import introphoto3 from '../assets/IntroPhotos/introphoto3.jpg'
@@ -39,7 +40,7 @@ const Intro = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
-          <div>
+          <div className="lg:pt-20">
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold tracking-widest uppercase mb-8">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               The Studio
@@ -66,9 +67,11 @@ const Intro = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-              <button className="px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-colors flex items-center gap-2 group">
-                Learn More <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              <Link to="/start">
+                <button className="px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-colors flex items-center gap-2 group">
+                  Start Your Journey <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
               <button className="px-8 py-4 border border-slate-200 text-slate-900 rounded-full font-bold hover:bg-slate-50 transition-colors">
                 View Case Studies
               </button>

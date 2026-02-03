@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight, Instagram, Twitter, Linkedin } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import bgvideo from '../assets/video.mp4'
 
 const Navbar = () => {
@@ -131,14 +132,14 @@ const Navbar = () => {
                     )}
                 </AnimatePresence>
 
-                <div id="home" className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6">
-                    <div className="max-w-5xl">
+                <div id="home" className="relative z-20 h-full flex flex-col justify-center px-6">
+                    <div className="max-w-5xl mx-auto w-full">
                         <motion.h1
                             custom={0}
                             initial="hidden"
                             animate="visible"
                             variants={heroVariants}
-                            className="text-5xl md:text-7xl lg:text-9xl text-white font-bold leading-[0.9] tracking-tighter mb-8"
+                            className="text-5xl md:text-7xl lg:text-9xl text-white font-bold leading-[0.95] tracking-tight mb-8 text-left"
                         >
                             THE <motion.span
                                 animate={{ opacity: [0.5, 1, 0.5] }}
@@ -151,25 +152,29 @@ const Navbar = () => {
                             initial="hidden"
                             animate="visible"
                             variants={heroVariants}
-                            className="text-lg md:text-xl text-white/60 font-light max-w-2xl mx-auto mb-12 tracking-wide"
+                            className="text-lg md:text-xl text-white/60 font-light max-w-2xl mb-12 tracking-wide text-left"
                         >
                             Scenic is a boutique creative studio specializing in luxury brand narratives and high-end talent management.
                         </motion.p>
-                        <motion.button
-                            custom={2}
-                            initial="hidden"
-                            animate="visible"
-                            variants={heroVariants}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="group flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-black px-8 py-4 rounded-full font-bold transition-all duration-300"
-                        >
-                            START A PROJECT <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                        </motion.button>
+                        <div className="flex justify-start">
+                            <Link to="/start" className="inline-block">
+                                <motion.button
+                                    custom={2}
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={heroVariants}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="group flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-black px-8 py-4 rounded-full font-bold transition-all duration-300"
+                                >
+                                    START A PROJECT <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                </motion.button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
 
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20">
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20">
                     <motion.span
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}

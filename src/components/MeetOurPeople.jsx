@@ -1,17 +1,17 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Instagram, Twitter, Linkedin } from 'lucide-react'
-import teamphoto1 from '../assets/IntroPhotos/introphoto1.jpg'
-import teamphoto2 from '../assets/IntroPhotos/introphoto2.jpg'
-import teamphoto3 from '../assets/IntroPhotos/introphoto3.jpg'
-import teamphoto4 from '../assets/IntroPhotos/introphoto4.jpg'
+import teamphoto1 from '../assets/PeoplePhotos/team_gen_1.png'
+import teamphoto2 from '../assets/PeoplePhotos/team_gen_2.png'
+import teamphoto3 from '../assets/PeoplePhotos/team_gen_3.png'
+import teamphoto4 from '../assets/PeoplePhotos/team_gen_4.png'
 
 const MeetOurPeople = () => {
     const people = [
-        { name: 'Catherine Jann', role: 'Executive Creative Director', photo: teamphoto1 },
-        { name: 'Luke Wara', role: 'Head of Talent Strategy', photo: teamphoto2 },
-        { name: 'Mona Mana', role: 'Senior Art Director', photo: teamphoto3 },
-        { name: 'Phway Phyu', role: 'Principal Designer', photo: teamphoto4 }
+        { name: 'Alessandra Rossi', role: 'Executive Creative Director', photo: teamphoto1 },
+        { name: 'Sarah Jenkins', role: 'Head of Talent Strategy', photo: teamphoto2 },
+        { name: 'Julian Voss', role: 'Senior Art Director', photo: teamphoto3 },
+        { name: 'Elena Moretti', role: 'Principal Designer', photo: teamphoto4 }
     ]
 
     const containerVariants = {
