@@ -37,18 +37,29 @@ const Navbar = () => {
 
     return (
         <div className="relative">
-            <div className="relative h-screen w-full overflow-hidden">
-                <video autoPlay muted loop playsInline className="absolute inset-0 brightness-[0.35] w-full h-full object-cover z-[-2] scale-105">
-                    <source src={bgvideo} type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-emerald-950/40 z-[-1]"></div>
+            <div className="relative h-screen w-full overflow-hidden bg-slate-950">
+                {/* Background Video & Gradient */}
+                <div className="absolute inset-0 z-0">
+                    <video
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover brightness-[0.4] scale-105"
+                    >
+                        <source src={bgvideo} type="video/mp4" />
+                    </video>
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/50 to-emerald-950/50"></div>
+                </div>
 
-                <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                <div className="pointer-events-none absolute inset-0 overflow-hidden z-10">
                     <div className="hero-orb top-[-10%] left-[-5%] w-[400px] h-[400px] bg-emerald-500/10 blur-[100px]" />
                     <div className="hero-orb bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-emerald-500/10 blur-[100px]" />
                 </div>
 
-                <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-white/10 backdrop-blur-xl border-b border-white/10' : 'py-8 bg-transparent'
+                <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+                    ? 'py-4 bg-slate-950/80 backdrop-blur-xl border-b border-white/5 shadow-2xl'
+                    : 'py-8 bg-transparent'
                     }`}>
                     <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
                         <motion.div
@@ -120,7 +131,7 @@ const Navbar = () => {
                     )}
                 </AnimatePresence>
 
-                <div id="home" className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                <div id="home" className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6">
                     <div className="max-w-5xl">
                         <motion.h1
                             custom={0}
@@ -158,7 +169,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20">
                     <motion.span
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
