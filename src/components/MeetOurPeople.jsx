@@ -27,7 +27,7 @@ const MeetOurPeople = () => {
                         initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
                         animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        whileHover={reduceMotion ? undefined : { y: -8, scale: 1.01 }}
+                        whileHover={reduceMotion ? undefined : { y: -6 }}
                     >
                         <div className="relative rounded-full p-1 bg-gradient-to-br from-emerald-300 via-white to-emerald-600 shadow-xl shadow-emerald-200/60">
                             <img

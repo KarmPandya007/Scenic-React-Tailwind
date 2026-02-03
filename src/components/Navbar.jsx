@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import bgvideo from '../assets/video.mp4'
 
@@ -27,20 +26,18 @@ const Navbar = () => {
                     </div>
                     <div className="nav-links hidden md:flex gap-4 lg:gap-8" aria-label="Primary navigation">
                         {[
-                            { label: 'HOME', href: '/' },
-                            { label: 'STUDIO', href: '/about' },
-                            { label: 'OUR PEOPLE', href: '/people' },
-                            { label: "LET'S TALK", href: '/contact' }
+                            { label: 'HOME', href: '#home' },
+                            { label: 'STUDIO', href: '#intro' },
+                            { label: 'OUR PEOPLE', href: '#people' },
+                            { label: "LET'S TALK", href: '#contact' }
                         ].map((item, index) => (
-                            <motion.div
+                            <a
                                 key={item.label}
+                                href={item.href}
                                 className={`nav-link text-sm lg:text-base text-white/80 hover:text-emerald-200 transition animate-fade-down animate-delay-${index + 1} focus-ring`}
-                                initial={reduceMotion ? undefined : { opacity: 0, y: -8 }}
-                                animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.1 + index * 0.06 }}
                             >
-                                <Link to={item.href}>{item.label}</Link>
-                            </motion.div>
+                                {item.label}
+                            </a>
                         ))}
                     </div>
                     <div className="md:hidden flex flex-col gap-1 cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -54,14 +51,14 @@ const Navbar = () => {
                     <div className="md:hidden absolute top-16 left-0 right-0 bg-black/90 backdrop-blur-md z-40 p-4 animate-fade-down">
                         <div className="flex flex-col gap-4 text-white">
                             {[
-                                { label: 'HOME', href: '/' },
-                                { label: 'STUDIO', href: '/about' },
-                                { label: 'OUR PEOPLE', href: '/people' },
-                                { label: "LET'S TALK", href: '/contact' }
+                                { label: 'HOME', href: '#home' },
+                                { label: 'STUDIO', href: '#intro' },
+                                { label: 'OUR PEOPLE', href: '#people' },
+                                { label: "LET'S TALK", href: '#contact' }
                             ].map((item) => (
-                                <Link key={item.label} to={item.href} className="hover:text-emerald-200 py-2 transition focus-ring">
+                                <a key={item.label} href={item.href} className="hover:text-emerald-200 py-2 transition focus-ring">
                                     {item.label}
-                                </Link>
+                                </a>
                             ))}
                         </div>
                     </div>

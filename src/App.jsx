@@ -1,11 +1,8 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Layout from './components/Layout'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Home from './pages/Home'
-import People from './pages/People'
-import Work from './pages/Work'
-import NotFound from './pages/NotFound'
+import Navbar from './components/Navbar'
+import Intro from './components/Intro'
+import MeetOurPeople from './components/MeetOurPeople'
+import LetsTalk from './components/LetsTalk'
+import Footer from './components/Footer'
 
 function App() {
   return (

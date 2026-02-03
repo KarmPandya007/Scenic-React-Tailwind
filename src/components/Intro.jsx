@@ -103,7 +103,6 @@ const Intro = () => {
                 initial={reduceMotion ? undefined : { opacity: 0, y: 18 }}
                 animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * stagger }}
-                whileHover={reduceMotion ? undefined : { y: -6, rotate: index % 2 === 0 ? -1 : 1 }}
               >
                 <img
                   src={photo}
