@@ -3,18 +3,29 @@ import letstalkbgphoto from '../assets/letstalkbgphoto.jpg'
 
 const LetsTalk = () => {
     return (
-        <div className="bg-gray-200 mb-20 md:mb-30 pt-12 md:pt-20 pb-10 bg-[url('https://www.tooplate.com/templates/2133_moso_interior/images/slideshow/interior-wall-mockup-with-sofa-cabinet-living-room-with-empty-white-wall-background-3d-rendering.jpg')] px-4">
-            <div className="text-center text-gray-600 font-light text-2xl md:text-4xl mb-12 md:mb-20">Talk to us!</div>
-            <form action="" className="flex flex-col items-center justify-center gap-2 max-w-4xl mx-auto">
+        <div className="relative bg-gray-200 mb-20 md:mb-30 pt-12 md:pt-20 pb-10 px-4 overflow-hidden">
+            <img
+                src={letstalkbgphoto}
+                alt="Studio backdrop"
+                className="absolute inset-0 w-full h-full object-cover opacity-30"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/70 to-emerald-50/80"></div>
+            <div className="relative text-center text-gray-600 font-light text-2xl md:text-4xl mb-12 md:mb-20 animate-section-rise">
+                Talk to us!
+            </div>
+            <form
+                action=""
+                className="relative flex flex-col items-center justify-center gap-2 max-w-4xl mx-auto glass-panel animate-form-rise"
+            >
                 <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 w-full">
-                    <input type="text" placeholder="Name" className="bg-white rounded-md p-3 w-full md:w-80 mb-4 focus:outline-none focus:border-emerald-400 transition" />
-                    <input type="text" placeholder="Email Address" className="bg-white rounded-md p-3 w-full md:w-80 mb-4 focus:outline-none focus:border-emerald-400 transition" />
+                    <input type="text" placeholder="Name" className="form-input" />
+                    <input type="text" placeholder="Email Address" className="form-input" />
                 </div>
-                <input type="text" placeholder="Subject" className="bg-white rounded-md p-3 w-full md:w-167 mb-4 focus:outline-none focus:border-emerald-400 transition" />
-                <textarea placeholder="Message" className="bg-white rounded-md p-3 w-full md:w-167 h-32 md:h-40 mb-4 focus:outline-none focus:border-emerald-400 transition resize-none"></textarea>
-                <button
-                    className="font-light text-white text-sm md:text-lg bg-emerald-400 py-2 px-6 md:px-4 mx-3 my-5 hover:bg-gray-600 cursor-pointer transition">Send
-                    Message</button>
+                <input type="text" placeholder="Subject" className="form-input w-full" />
+                <textarea placeholder="Message" className="form-input w-full h-32 md:h-40 resize-none"></textarea>
+                <button className="font-light text-white text-sm md:text-lg bg-emerald-500 py-2 px-6 md:px-4 mx-3 my-5 hover:bg-emerald-600 cursor-pointer transition shadow-lg shadow-emerald-400/40 hover:scale-105 active:scale-95">
+                    Send Message
+                </button>
             </form>
         </div>
     )
