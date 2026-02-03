@@ -1,8 +1,8 @@
 import React from 'react'
-import teamphoto1 from '../assets/PeoplePhotos/team-image1.jpg'
-import teamphoto2 from '../assets/PeoplePhotos/team-image2.jpg'
-import teamphoto3 from '../assets/PeoplePhotos/team-image3.jpg'
-import teamphoto4 from '../assets/PeoplePhotos/team-image4.jpg'
+import teamphoto1 from '../assets/IntroPhotos/introphoto1.jpg'
+import teamphoto2 from '../assets/IntroPhotos/introphoto2.jpg'
+import teamphoto3 from '../assets/IntroPhotos/introphoto3.jpg'
+import teamphoto4 from '../assets/IntroPhotos/introphoto4.jpg'
 
 const MeetOurPeople = () => {
     const people = [

@@ -5,8 +5,14 @@ import introphoto3 from '../assets/IntroPhotos/introphoto3.jpg'
 import introphoto4 from '../assets/IntroPhotos/introphoto4.jpg'
 
 const Intro = () => {
+  const highlights = [
+    { label: 'Talent Network', value: '350+ creators' },
+    { label: 'Campaigns Delivered', value: '120+ global brands' },
+    { label: 'Average Growth', value: '3.2x lift' }
+  ]
+
   return (
-    <div className="py-16 md:py-24 px-4 bg-white">
+    <div className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-section-rise">
           <h2 className="text-sm md:text-base font-bold tracking-[3px] md:tracking-[8px] text-gray-800 mb-8">
