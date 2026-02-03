@@ -1,10 +1,12 @@
 import React from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import teamphoto1 from '../assets/IntroPhotos/introphoto1.jpg'
 import teamphoto2 from '../assets/IntroPhotos/introphoto2.jpg'
 import teamphoto3 from '../assets/IntroPhotos/introphoto3.jpg'
 import teamphoto4 from '../assets/IntroPhotos/introphoto4.jpg'
 
 const MeetOurPeople = () => {
+    const reduceMotion = useReducedMotion()
     const people = [
         { name: 'Catheriene Jann', role: 'Head Designer', photo: teamphoto1 },
         { name: 'Luke Wara', role: 'Speciality Focus', photo: teamphoto2 },
@@ -19,9 +21,13 @@ const MeetOurPeople = () => {
             </div>
             <div className="images grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6 justify-items-center">
                 {people.map((person, index) => (
-                    <div
+                    <motion.div
                         key={person.name}
                         className={`text-center group animate-card-rise animate-delay-${index + 1} card-surface px-6 py-8`}
+                        initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
+                        animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        whileHover={reduceMotion ? undefined : { y: -6 }}
                     >
                         <div className="relative rounded-full p-1 bg-gradient-to-br from-emerald-300 via-white to-emerald-600 shadow-xl shadow-emerald-200/60">
                             <img
@@ -32,7 +38,7 @@ const MeetOurPeople = () => {
                         </div>
                         <p className="text-gray-400 text-center my-3">{person.name}</p>
                         <p className="text-gray-800 text-lg md:text-xl font-bold text-center">{person.role}</p>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

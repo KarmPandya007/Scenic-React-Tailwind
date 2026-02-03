@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import bgvideo from '../assets/video.mp4'
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const reduceMotion = useReducedMotion()
 
     return (
         <div>
@@ -64,15 +66,29 @@ const Navbar = () => {
 
                 <div id="home" className="absolute inset-0 flex items-center justify-center text-center px-4 md:px-0">
                     <div className="max-w-4xl animate-hero-rise">
-                        <p className="text-3xl md:text-6xl lg:text-8xl text-white font-light leading-tight mb-6 animate-bounce-text text-glow">
+                        <motion.p
+                            className="text-3xl md:text-6xl lg:text-8xl text-white font-light leading-tight mb-6 animate-bounce-text text-glow"
+                            initial={reduceMotion ? undefined : { opacity: 0, y: 24 }}
+                            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                        >
                             Welcome to Scenic <br />The Creative Media Agency
-                        </p>
-                        <p className="text-sm md:text-lg text-white/80 font-light mb-8 text-float">
+                        </motion.p>
+                        <motion.p
+                            className="text-sm md:text-lg text-white/80 font-light mb-8 text-float"
+                            initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
+                            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+                        >
                             Specializing in Model Management and Advertising Campaigns
-                        </p>
-                        <button className="btn-primary btn-glow focus-ring pulse-ring">
+                        </motion.p>
+                        <motion.button
+                            className="btn-primary btn-glow focus-ring pulse-ring"
+                            whileHover={reduceMotion ? undefined : { scale: 1.03 }}
+                            whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+                        >
                             Discover More
-                        </button>
+                        </motion.button>
                     </div>
                 </div>
             </div>
