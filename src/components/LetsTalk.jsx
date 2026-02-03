@@ -1,42 +1,95 @@
 import React from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
-import letstalkbgphoto from '../assets/letstalkbgphoto.jpg'
+import { motion } from 'framer-motion'
+import { Send, Phone, Mail, MapPin } from 'lucide-react'
 
 const LetsTalk = () => {
-    const reduceMotion = useReducedMotion()
     return (
-        <div id="contact" className="relative bg-gray-200 section-padding overflow-hidden">
-            <img
-                src={letstalkbgphoto}
-                alt="Studio backdrop"
-                className="absolute inset-0 w-full h-full object-cover opacity-30"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/70 to-emerald-50/80"></div>
-            <div className="relative text-center text-gray-600 font-light text-2xl md:text-4xl mb-12 md:mb-20 animate-section-rise">
-                Talk to us!
-            </div>
-            <motion.form
-                action=""
-                className="relative flex flex-col items-center justify-center gap-2 max-w-4xl mx-auto glass-panel animate-form-rise"
-                initial={reduceMotion ? undefined : { opacity: 0, y: 24 }}
-                animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-            >
-                <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 w-full">
-                    <input type="text" placeholder="Name" className="form-input" />
-                    <input type="text" placeholder="Email Address" className="form-input" />
+        <section id="contact" className="py-24 md:py-32 bg-white relative z-10">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="contact-grid grid grid-cols-1 lg:grid-cols-2 gap-20">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="contact-info"
+                    >
+                        <h2 className="text-sm font-bold tracking-[0.3em] text-emerald-500 uppercase mb-4">Contact Us</h2>
+                        <h3 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tighter mb-8 italic">Let's create something iconic together.</h3>
+                        <p className="text-lg text-slate-500 mb-12 max-w-md">
+                            Ready to take your brand to the next level? Our team is standing by to help you craft your next masterpiece.
+                        </p>
+
+                        <div className="space-y-8">
+                            <div className="flex items-center gap-6 group">
+                                <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                    <Mail size={24} />
+                                </div>
+                                <div>
+                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Email us</p>
+                                    <p className="text-xl font-bold text-slate-900 transition-colors">hello@scenic.studio</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-6 group">
+                                <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                    <Phone size={24} />
+                                </div>
+                                <div>
+                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Call us</p>
+                                    <p className="text-xl font-bold text-slate-900 transition-colors">+1 (555) 000-SCENIC</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-6 group">
+                                <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                    <MapPin size={24} />
+                                </div>
+                                <div>
+                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Visit us</p>
+                                    <p className="text-xl font-bold text-slate-900 transition-colors">Milan, Italy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="contact-form bg-slate-50 p-8 md:p-12 rounded-[2.5rem] border border-slate-100"
+                    >
+                        <form className="space-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-bold text-slate-600 ml-1">Name</label>
+                                    <input type="text" placeholder="John Doe" className="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all" />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-sm font-bold text-slate-600 ml-1">Email</label>
+                                    <input type="email" placeholder="john@example.com" className="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all" />
+                                </div>
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold text-slate-600 ml-1">Project Type</label>
+                                <select className="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all appearance-none bg-white">
+                                    <option>Branding & Identity</option>
+                                    <option>Talent Management</option>
+                                    <option>Editorial Campaign</option>
+                                    <option>Digital Strategy</option>
+                                </select>
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold text-slate-600 ml-1">Message</label>
+                                <textarea rows="4" placeholder="Tell us about your vision..." className="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all resize-none"></textarea>
+                            </div>
+                            <button className="w-full py-5 bg-emerald-500 text-black font-bold rounded-2xl hover:bg-emerald-400 transition-all flex items-center justify-center gap-3 group">
+                                Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            </button>
+                        </form>
+                    </motion.div>
                 </div>
-                <input type="text" placeholder="Subject" className="form-input w-full" />
-                <textarea placeholder="Message" className="form-input w-full h-32 md:h-40 resize-none"></textarea>
-                <motion.button
-                    className="btn-primary btn-glow focus-ring my-5 pulse-ring"
-                    whileHover={reduceMotion ? undefined : { scale: 1.03 }}
-                    whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-                >
-                    Send Message
-                </motion.button>
-            </motion.form>
-        </div>
+            </div>
+        </section>
     )
 }
 

@@ -1,47 +1,79 @@
 import React from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { Instagram, Twitter, Linkedin } from 'lucide-react'
 import teamphoto1 from '../assets/IntroPhotos/introphoto1.jpg'
 import teamphoto2 from '../assets/IntroPhotos/introphoto2.jpg'
 import teamphoto3 from '../assets/IntroPhotos/introphoto3.jpg'
 import teamphoto4 from '../assets/IntroPhotos/introphoto4.jpg'
 
 const MeetOurPeople = () => {
-    const reduceMotion = useReducedMotion()
     const people = [
-        { name: 'Catheriene Jann', role: 'Head Designer', photo: teamphoto1 },
-        { name: 'Luke Wara', role: 'Speciality Focus', photo: teamphoto2 },
-        { name: 'Mona Mana', role: 'Art Director', photo: teamphoto3 },
-        { name: 'Phway Phyu', role: 'Designer in Chief', photo: teamphoto4 }
+        { name: 'Catherine Jann', role: 'Executive Creative Director', photo: teamphoto1 },
+        { name: 'Luke Wara', role: 'Head of Talent Strategy', photo: teamphoto2 },
+        { name: 'Mona Mana', role: 'Senior Art Director', photo: teamphoto3 },
+        { name: 'Phway Phyu', role: 'Principal Designer', photo: teamphoto4 }
     ]
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    }
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    }
+
     return (
-        <div id="people" className="section-padding">
-            <div className="text-center text-gray-600 font-light text-2xl md:text-4xl mb-12 md:mb-20 animate-section-rise">
-                Meet Our People
+        <section id="people" className="py-24 md:py-32 bg-slate-50 relative z-10">
+            <div className="max-w-7xl mx-auto px-6">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-20"
+                >
+                    <h2 className="text-sm font-bold tracking-[0.3em] text-emerald-500 uppercase mb-4">Our Collaborative</h2>
+                    <h3 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tighter">Visionaries behind the scenes.</h3>
+                </motion.div>
+
+                <motion.div
+                    className="images-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                >
+                    {people.map((person) => (
+                        <motion.div key={person.name} variants={itemVariants} className="group">
+                            <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden mb-6 bg-slate-200">
+                                <img
+                                    src={person.photo}
+                                    alt={person.name}
+                                    className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                                    <div className="flex gap-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                        <Instagram size={20} className="text-white hover:text-emerald-400 cursor-pointer" />
+                                        <Twitter size={20} className="text-white hover:text-emerald-400 cursor-pointer" />
+                                        <Linkedin size={20} className="text-white hover:text-emerald-400 cursor-pointer" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">{person.name}</h4>
+                                <p className="text-slate-500 font-medium">{person.role}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
-            <div className="images grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6 justify-items-center">
-                {people.map((person, index) => (
-                    <motion.div
-                        key={person.name}
-                        className={`text-center group animate-card-rise animate-delay-${index + 1} card-surface px-6 py-8`}
-                        initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
-                        animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        whileHover={reduceMotion ? undefined : { y: -6 }}
-                    >
-                        <div className="relative rounded-full p-1 bg-gradient-to-br from-emerald-300 via-white to-emerald-600 shadow-xl shadow-emerald-200/60">
-                            <img
-                                src={person.photo}
-                                alt={person.name}
-                                className="h-48 w-48 md:h-63 md:w-63 rounded-full object-cover transition duration-500 group-hover:scale-105 animate-float-slow"
-                            />
-                        </div>
-                        <p className="text-gray-400 text-center my-3">{person.name}</p>
-                        <p className="text-gray-800 text-lg md:text-xl font-bold text-center">{person.role}</p>
-                    </motion.div>
-                ))}
-            </div>
-        </div>
+        </section>
     )
 }
 

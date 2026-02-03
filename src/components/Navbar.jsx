@@ -1,95 +1,177 @@
-import React, { useState } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, ArrowRight, Instagram, Twitter, Linkedin } from 'lucide-react'
 import bgvideo from '../assets/video.mp4'
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const reduceMotion = useReducedMotion()
+    const [scrolled, setScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50)
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    const navLinks = [
+        { label: 'HOME', href: '#home' },
+        { label: 'STUDIO', href: '#intro' },
+        { label: 'OUR PEOPLE', href: '#people' },
+        { label: "LET'S TALK", href: '#contact' }
+    ]
+
+    const heroVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: (i) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: 0.5 + (i * 0.2),
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        })
+    }
 
     return (
-        <div>
+        <div className="relative">
             <div className="relative h-screen w-full overflow-hidden">
                 <video autoPlay muted loop playsInline className="absolute inset-0 brightness-[0.35] w-full h-full object-cover z-[-2] scale-105">
                     <source src={bgvideo} type="video/mp4" />
-                    Your browser does not support the video tag.
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-emerald-900/30 z-[-1]"></div>
-                <div className="pointer-events-none absolute inset-0">
-                    {['top-10 left-10', 'bottom-20 right-16', 'top-1/3 right-1/4'].map((position) => (
-                        <div key={position} className={`hero-orb ${position}`} />
-                    ))}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-emerald-950/40 z-[-1]"></div>
+
+                <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                    <div className="hero-orb top-[-10%] left-[-5%] w-[400px] h-[400px] bg-emerald-500/10 blur-[100px]" />
+                    <div className="hero-orb bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-emerald-500/10 blur-[100px]" />
                 </div>
-                <div
-                    className="nav flex flex-row justify-between items-center p-4 px-4 md:px-20 text-white sticky top-0 z-50 shadow-xl bg-white/10 backdrop-blur-md">
-                    <div className="logo text-2xl md:text-4xl font-semibold tracking-wide hover:scale-110 cursor-pointer transition animate-fade-down">
-                        Scenic
-                    </div>
-                    <div className="nav-links hidden md:flex gap-4 lg:gap-8" aria-label="Primary navigation">
-                        {[
-                            { label: 'HOME', href: '#home' },
-                            { label: 'STUDIO', href: '#intro' },
-                            { label: 'OUR PEOPLE', href: '#people' },
-                            { label: "LET'S TALK", href: '#contact' }
-                        ].map((item, index) => (
-                            <a
-                                key={item.label}
-                                href={item.href}
-                                className={`nav-link text-sm lg:text-base text-white/80 hover:text-emerald-200 transition animate-fade-down animate-delay-${index + 1} focus-ring`}
-                            >
-                                {item.label}
-                            </a>
-                        ))}
-                    </div>
-                    <div className="md:hidden flex flex-col gap-1 cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                        <div className="w-6 h-0.5 bg-white"></div>
-                        <div className="w-6 h-0.5 bg-white"></div>
-                        <div className="w-6 h-0.5 bg-white"></div>
-                    </div>
-                </div>
-                
-                {isMenuOpen && (
-                    <div className="md:hidden absolute top-16 left-0 right-0 bg-black/90 backdrop-blur-md z-40 p-4 animate-fade-down">
-                        <div className="flex flex-col gap-4 text-white">
-                            {[
-                                { label: 'HOME', href: '#home' },
-                                { label: 'STUDIO', href: '#intro' },
-                                { label: 'OUR PEOPLE', href: '#people' },
-                                { label: "LET'S TALK", href: '#contact' }
-                            ].map((item) => (
-                                <a key={item.label} href={item.href} className="hover:text-emerald-200 py-2 transition focus-ring">
-                                    {item.label}
-                                </a>
+
+                <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-white/10 backdrop-blur-xl border-b border-white/10' : 'py-8 bg-transparent'
+                    }`}>
+                    <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="text-2xl md:text-3xl font-bold tracking-tighter text-white cursor-pointer group"
+                        >
+                            SCENIC<span className="text-emerald-500 group-hover:animate-pulse">.</span>
+                        </motion.div>
+
+                        <div className="hidden md:flex items-center gap-10">
+                            {navLinks.map((link, i) => (
+                                <motion.a
+                                    key={link.label}
+                                    href={link.href}
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1 * i }}
+                                    className="text-xs font-semibold tracking-[0.2em] text-white/70 hover:text-white transition-colors relative group"
+                                >
+                                    {link.label}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                                </motion.a>
                             ))}
                         </div>
-                    </div>
-                )}
 
-                <div id="home" className="absolute inset-0 flex items-center justify-center text-center px-4 md:px-0">
-                    <div className="max-w-4xl animate-hero-rise">
-                        <motion.p
-                            className="text-3xl md:text-6xl lg:text-8xl text-white font-light leading-tight mb-6 animate-bounce-text text-glow"
-                            initial={reduceMotion ? undefined : { opacity: 0, y: 24 }}
-                            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                        <div className="md:hidden">
+                            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white">
+                                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, x: '100%' }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: '100%' }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                            className="fixed inset-0 bg-black z-[100] flex flex-col p-10"
                         >
-                            Welcome to Scenic <br />The Creative Media Agency
-                        </motion.p>
-                        <motion.p
-                            className="text-sm md:text-lg text-white/80 font-light mb-8 text-float"
-                            initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
-                            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+                            <div className="flex justify-between items-center mb-20">
+                                <span className="text-2xl font-bold text-white">SCENIC<span className="text-emerald-500">.</span></span>
+                                <button onClick={() => setIsMenuOpen(false)} className="text-white"><X size={32} /></button>
+                            </div>
+                            <div className="flex flex-col gap-8">
+                                {navLinks.map((link, i) => (
+                                    <motion.a
+                                        key={link.label}
+                                        href={link.href}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.1 * i }}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="text-4xl font-light text-white/50 hover:text-white transition-colors"
+                                    >
+                                        {link.label}
+                                    </motion.a>
+                                ))}
+                            </div>
+                            <div className="mt-auto flex gap-6">
+                                <Instagram className="text-emerald-500 hover:text-white cursor-pointer transition-colors" />
+                                <Twitter className="text-emerald-500 hover:text-white cursor-pointer transition-colors" />
+                                <Linkedin className="text-emerald-500 hover:text-white cursor-pointer transition-colors" />
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                <div id="home" className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                    <div className="max-w-5xl">
+                        <motion.h1
+                            custom={0}
+                            initial="hidden"
+                            animate="visible"
+                            variants={heroVariants}
+                            className="text-5xl md:text-7xl lg:text-9xl text-white font-bold leading-[0.9] tracking-tighter mb-8"
                         >
-                            Specializing in Model Management and Advertising Campaigns
+                            THE <motion.span
+                                animate={{ opacity: [0.5, 1, 0.5] }}
+                                transition={{ repeat: Infinity, duration: 2 }}
+                                className="text-emerald-500 inline-block"
+                            >FUTURE</motion.span> <br /> OF CONTENT
+                        </motion.h1>
+                        <motion.p
+                            custom={1}
+                            initial="hidden"
+                            animate="visible"
+                            variants={heroVariants}
+                            className="text-lg md:text-xl text-white/60 font-light max-w-2xl mx-auto mb-12 tracking-wide"
+                        >
+                            Scenic is a boutique creative studio specializing in luxury brand narratives and high-end talent management.
                         </motion.p>
                         <motion.button
-                            className="btn-primary btn-glow focus-ring pulse-ring"
-                            whileHover={reduceMotion ? undefined : { scale: 1.03 }}
-                            whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+                            custom={2}
+                            initial="hidden"
+                            animate="visible"
+                            variants={heroVariants}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="group flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-black px-8 py-4 rounded-full font-bold transition-all duration-300"
                         >
-                            Discover More
+                            START A PROJECT <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </motion.button>
                     </div>
+                </div>
+
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2 }}
+                        className="text-[10px] tracking-[0.3em] text-white/30 uppercase"
+                    >
+                        Scroll to explore
+                    </motion.span>
+                    <motion.div
+                        animate={{ y: [0, 10, 0] }}
+                        transition={{ repeat: Infinity, duration: 2 }}
+                        className="w-[1px] h-12 bg-gradient-to-b from-emerald-500 to-transparent"
+                    />
                 </div>
             </div>
         </div>

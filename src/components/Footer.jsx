@@ -1,42 +1,73 @@
 import React from 'react'
+import { Instagram, Twitter, Linkedin, Facebook, ArrowUp } from 'lucide-react'
 
 const Footer = () => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
     return (
-        <div className="footer flex flex-col justify-center items-center p-6 md:p-10 px-4 bg-gradient-to-b from-white via-emerald-50/50 to-white">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-30 max-w-6xl w-full">
-                <div className="flex flex-col gap-4 text-center md:text-left animate-section-rise">
-                    <p className="font-light text-2xl md:text-4xl text-gray-800">Digital Studio</p>
-                    <p className="text-gray-600 text-sm md:text-md font-light">
-                        Scenic Media Agency <br />
-                        2158 Sunset Boulevard, <br />
-                        Suite 300, Los Angeles, CA 90026, <br />
-                        United States
-                    </p>
-                </div>
-                <div className="flex flex-col gap-4 text-center md:text-left animate-section-rise animate-delay-1">
-                    <p className="font-light text-2xl md:text-4xl text-gray-800">Keep in touch</p>
-                    <p className="text-gray-600 text-sm md:text-md font-light my-[-4px]">010-090-0780</p>
-                    <p className="text-gray-600 text-sm md:text-md font-light my-[-4px]">info@company.com</p>
-                    <p className="text-gray-600 text-sm md:text-md font-light my-[-4px]">Our Location</p>
-                </div>
-                <div className="flex flex-col gap-4 text-center md:text-left animate-section-rise animate-delay-2">
-                    <p className="font-light text-2xl md:text-4xl text-gray-800">About Us</p>
-                    <p className="text-gray-600 text-sm md:text-lg font-light">We connect top talent with bold brands to create
-                        powerful
-                        visuals that inspire, influence, and make a lasting impact.</p>
-                    <div className="icons flex gap-6 mt-3 justify-center md:justify-start">
-                        <i className="fa-brands fa-x-twitter scale-120 hover:text-gray-950 hover:scale-150 cursor-pointer transition"></i>
-                        <i className="fa-brands fa-facebook-f scale-120 hover:text-blue-600 hover:scale-150 cursor-pointer transition"></i>
-                        <i className="fa-brands fa-instagram scale-120 hover:text-pink-600 hover:scale-150 cursor-pointer transition"></i>
-                        <i className="fa-brands fa-linkedin-in scale-120 hover:text-blue-500 hover:scale-150 cursor-pointer transition"></i>
+        <footer className="bg-slate-950 text-white pt-24 pb-12">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                    <div className="col-span-1 lg:col-span-1">
+                        <div className="text-3xl font-bold tracking-tighter mb-8">
+                            SCENIC<span className="text-emerald-500">.</span>
+                        </div>
+                        <p className="text-slate-400 leading-relaxed mb-8">
+                            A boutique creative studio crafting elevated digital experiences and narratives for visionary brands.
+                        </p>
+                        <div className="flex gap-4">
+                            {[Instagram, Twitter, Linkedin, Facebook].map((Icon, i) => (
+                                <a key={i} href="#" className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center hover:bg-emerald-500 hover:border-emerald-500 hover:text-black transition-all duration-300">
+                                    <Icon size={18} />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-10 text-emerald-500">Studio</h4>
+                        <ul className="space-y-4 text-slate-400 font-medium">
+                            <li><a href="#" className="hover:text-white transition-colors">Our Work</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Talent Network</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Campaigns</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-10 text-emerald-500">Contact</h4>
+                        <ul className="space-y-4 text-slate-400 font-medium">
+                            <li>hello@scenic.studio</li>
+                            <li>+1 (555) 000-SCENIC</li>
+                            <li>Milan, Italy</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-10 text-emerald-500">Newsletter</h4>
+                        <p className="text-slate-400 mb-6 font-medium">Stay updated with our latest drops.</p>
+                        <div className="relative">
+                            <input type="email" placeholder="Email Address" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 outline-none focus:border-emerald-500 transition-colors" />
+                            <button className="absolute right-2 top-1/2 -translate-y-1/2 text-emerald-500 font-bold text-xs uppercase hover:text-emerald-400 transition-colors">Join</button>
+                        </div>
                     </div>
                 </div>
+
+                <div className="pt-12 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <p className="text-slate-500 text-sm font-medium">
+                        &copy; 2025 Scenic Studio. All rights reserved.
+                    </p>
+                    <button
+                        onClick={scrollToTop}
+                        className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors"
+                    >
+                        Back to top <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform" />
+                    </button>
+                </div>
             </div>
-
-            <div className="text-gray-700 text-xs md:text-md font-light mt-12 md:mt-20 text-center">Copyright &copy; 2025 Company Name | Design: Tooplate</div>
-
-        </div>
-
+        </footer>
     )
 }
 
