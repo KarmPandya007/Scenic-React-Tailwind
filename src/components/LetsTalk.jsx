@@ -3,6 +3,7 @@ import letstalkbgphoto from '../assets/letstalkbgphoto.jpg'
 
 const LetsTalk = () => {
     return (
+        <div id="contact" className="relative bg-gray-200 section-padding overflow-hidden">
         <div className="relative bg-gray-200 mb-20 md:mb-30 pt-12 md:pt-20 pb-10 px-4 overflow-hidden">
             <img
                 src={letstalkbgphoto}
@@ -23,6 +24,7 @@ const LetsTalk = () => {
                 </div>
                 <input type="text" placeholder="Subject" className="form-input w-full" />
                 <textarea placeholder="Message" className="form-input w-full h-32 md:h-40 resize-none"></textarea>
+                <button className="btn-primary btn-glow focus-ring my-5 pulse-ring">
                 <button className="font-light text-white text-sm md:text-lg bg-emerald-500 py-2 px-6 md:px-4 mx-3 my-5 hover:bg-emerald-600 cursor-pointer transition shadow-lg shadow-emerald-400/40 hover:scale-105 active:scale-95">
                     Send Message
                 </button>

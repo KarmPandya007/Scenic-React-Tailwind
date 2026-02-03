@@ -22,14 +22,19 @@ const Navbar = () => {
                     <div className="logo text-2xl md:text-4xl font-semibold tracking-wide hover:scale-110 cursor-pointer transition animate-fade-down">
                         Scenic
                     </div>
-                    <div className="nav-links hidden md:flex gap-4 lg:gap-8">
-                        {['HOME', 'STUDIO', 'OUR PEOPLE', "LET'S TALK"].map((item, index) => (
+                    <div className="nav-links hidden md:flex gap-4 lg:gap-8" aria-label="Primary navigation">
+                        {[
+                            { label: 'HOME', href: '#home' },
+                            { label: 'STUDIO', href: '#intro' },
+                            { label: 'OUR PEOPLE', href: '#people' },
+                            { label: "LET'S TALK", href: '#contact' }
+                        ].map((item, index) => (
                             <a
-                                key={item}
-                                href="#"
-                                className={`nav-link text-sm lg:text-base text-white/80 hover:text-emerald-200 transition animate-fade-down animate-delay-${index + 1}`}
+                                key={item.label}
+                                href={item.href}
+                                className={`nav-link text-sm lg:text-base text-white/80 hover:text-emerald-200 transition animate-fade-down animate-delay-${index + 1} focus-ring`}
                             >
-                                {item}
+                                {item.label}
                             </a>
                         ))}
                     </div>
@@ -43,24 +48,29 @@ const Navbar = () => {
                 {isMenuOpen && (
                     <div className="md:hidden absolute top-16 left-0 right-0 bg-black/90 backdrop-blur-md z-40 p-4 animate-fade-down">
                         <div className="flex flex-col gap-4 text-white">
-                            {['HOME', 'STUDIO', 'OUR PEOPLE', "LET'S TALK"].map((item) => (
-                                <a key={item} href="#" className="hover:text-emerald-200 py-2 transition">
-                                    {item}
+                            {[
+                                { label: 'HOME', href: '#home' },
+                                { label: 'STUDIO', href: '#intro' },
+                                { label: 'OUR PEOPLE', href: '#people' },
+                                { label: "LET'S TALK", href: '#contact' }
+                            ].map((item) => (
+                                <a key={item.label} href={item.href} className="hover:text-emerald-200 py-2 transition focus-ring">
+                                    {item.label}
                                 </a>
                             ))}
                         </div>
                     </div>
                 )}
 
-                <div className="absolute inset-0 flex items-center justify-center text-center px-4 md:px-0">
+                <div id="home" className="absolute inset-0 flex items-center justify-center text-center px-4 md:px-0">
                     <div className="max-w-4xl animate-hero-rise">
-                        <p className="text-3xl md:text-6xl lg:text-8xl text-white font-light leading-tight mb-6">
+                        <p className="text-3xl md:text-6xl lg:text-8xl text-white font-light leading-tight mb-6 animate-bounce-text text-glow">
                             Welcome to Scenic <br />The Creative Media Agency
                         </p>
-                        <p className="text-sm md:text-lg text-white/80 font-light mb-8">
+                        <p className="text-sm md:text-lg text-white/80 font-light mb-8 text-float">
                             Specializing in Model Management and Advertising Campaigns
                         </p>
-                        <button className="font-light text-white text-sm md:text-lg bg-emerald-400/90 py-2 px-6 hover:bg-emerald-300 cursor-pointer transition shadow-lg shadow-emerald-400/30 hover:scale-105 active:scale-95">
+                        <button className="btn-primary btn-glow focus-ring pulse-ring">
                             Discover More
                         </button>
                     </div>

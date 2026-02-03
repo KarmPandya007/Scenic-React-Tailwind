@@ -13,7 +13,7 @@ const MeetOurPeople = () => {
     ]
 
     return (
-        <div className="mb-20 md:mb-30 px-4">
+        <div id="people" className="section-padding">
             <div className="text-center text-gray-600 font-light text-2xl md:text-4xl mb-12 md:mb-20 animate-section-rise">
                 Meet Our People
             </div>
@@ -21,13 +21,13 @@ const MeetOurPeople = () => {
                 {people.map((person, index) => (
                     <div
                         key={person.name}
-                        className={`text-center group animate-card-rise animate-delay-${index + 1}`}
+                        className={`text-center group animate-card-rise animate-delay-${index + 1} card-surface px-6 py-8`}
                     >
                         <div className="relative rounded-full p-1 bg-gradient-to-br from-emerald-300 via-white to-emerald-600 shadow-xl shadow-emerald-200/60">
                             <img
                                 src={person.photo}
                                 alt={person.name}
-                                className="h-48 w-48 md:h-63 md:w-63 rounded-full object-cover transition duration-500 group-hover:scale-105"
+                                className="h-48 w-48 md:h-63 md:w-63 rounded-full object-cover transition duration-500 group-hover:scale-105 animate-float-slow"
                             />
                         </div>
                         <p className="text-gray-400 text-center my-3">{person.name}</p>
