@@ -64,7 +64,7 @@ const Navbar = () => {
 
                 <div id="home" className="absolute inset-0 flex items-center justify-center text-center px-4 md:px-0">
                     <div className="max-w-4xl animate-hero-rise">
-                        <p className="text-3xl md:text-6xl lg:text-8xl text-white font-light leading-tight mb-6">
+                        <p className="text-3xl md:text-6xl lg:text-8xl text-white font-light leading-tight mb-6 animate-bounce-text">
                             Welcome to Scenic <br />The Creative Media Agency
                         </p>
                         <p className="text-sm md:text-lg text-white/80 font-light mb-8">

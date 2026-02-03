@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import introphoto1 from '../assets/IntroPhotos/introphoto1.jpg'
 import introphoto2 from '../assets/IntroPhotos/introphoto2.jpg'
 import introphoto3 from '../assets/IntroPhotos/introphoto3.jpg'
 import introphoto4 from '../assets/IntroPhotos/introphoto4.jpg'
 
 const Intro = () => {
+  const [campaigns, setCampaigns] = useState(120)
   const highlights = [
     { label: 'Talent Network', value: '350+ creators' },
     { label: 'Campaigns Delivered', value: '120+ global brands' },
@@ -37,6 +38,19 @@ const Intro = () => {
                 </div>
               ))}
             </div>
+            <div className="mt-6 flex items-center gap-4 text-sm text-gray-500">
+              <span>Active campaigns:</span>
+              <span key={campaigns} className="text-lg font-semibold text-gray-900 animate-diff-swap">
+                {campaigns}+
+              </span>
+              <button
+                className="btn-outline focus-ring"
+                type="button"
+                onClick={() => setCampaigns((value) => value + 1)}
+              >
+                Refresh stat
+              </button>
+            </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <button className="btn-primary focus-ring">Our Studio</button>
               <button className="btn-outline focus-ring">View Case Studies</button>
@@ -53,7 +67,7 @@ const Intro = () => {
                 <img
                   src={photo}
                   alt="Creative work showcase"
-                  className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                  className={`w-full h-full object-cover transition duration-500 group-hover:scale-105 ${index === 1 ? 'animate-fall-in' : 'animate-rise-in'} ${index === 0 ? 'animate-float-slow' : ''}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
               </div>
